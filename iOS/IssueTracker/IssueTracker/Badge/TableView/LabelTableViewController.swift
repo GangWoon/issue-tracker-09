@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Combine
 
 final class LabelTableViewController: ReusableTableViewController {
     
@@ -41,6 +42,17 @@ final class LabelTableViewController: ReusableTableViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableHeaderView.identifier) as? ReusableHeaderView
         headerView?.apply(title: headerViewTitle)
+        var subscriber: AnyCancellable?
+        subscriber = headerView?.addButton.publisher(for: .touchUpInside)
+            .map { control -> UIButton in
+                guard let button = control as? UIButton else { return UIButton() }
+                return button
+        }.sink(receiveCompletion: { _ in
+            subscriber?.cancel()
+        }, receiveValue: { _ in
+            let createViewController = CreatLabelViewController()
+            self.present(createViewController, animated: true)
+        })
         
         return headerView
     }

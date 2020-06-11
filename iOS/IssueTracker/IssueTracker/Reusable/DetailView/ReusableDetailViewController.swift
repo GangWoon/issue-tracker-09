@@ -12,7 +12,7 @@ class ReusableDetailViewController: UIViewController {
     
     // MARK: - Properties
     private var dimmedView: UIView!
-    private var contentView: ReusableDetailContentView!
+    var contentView: ReusableDetailContentView!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -31,10 +31,12 @@ class ReusableDetailViewController: UIViewController {
     private func configureDimmedView() {
         dimmedView = UIView()
         dimmedView.backgroundColor = UIColor.black.withAlphaComponent(0.66)
+        view.addSubview(dimmedView)
     }
     
     private func configureContentView() {
         contentView = ReusableDetailContentView()
+        dimmedView.addSubview(contentView)
     }
     
     // MARK: Constraints
@@ -45,11 +47,11 @@ class ReusableDetailViewController: UIViewController {
     
     private func makeConstraintsDimmedView() {
         dimmedView.snp.makeConstraints { make in
-            make.centerX.centerY.width.height.equalToSuperview()
+            make.edges.equalToSuperview()
         }
     }
     
-    private func makeConstraintsContentView() {
+    func makeConstraintsContentView() {
         contentView.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()
         }

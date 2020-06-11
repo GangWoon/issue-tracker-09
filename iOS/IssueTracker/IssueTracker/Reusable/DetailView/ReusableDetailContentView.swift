@@ -16,6 +16,18 @@ final class ReusableDetailContentView: UIView {
     private var resetButton: UIButton!
     private var saveButton: UIButton!
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        configure()
+        makeConstraints()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        configure()
+        makeConstraints()
+    }
+    
     // MARK: - Methods
     func addContentView(view: UIView) {
         addSubview(view)
@@ -28,6 +40,8 @@ final class ReusableDetailContentView: UIView {
     
     // MARK: Configure
     private func configure() {
+        backgroundColor = .white
+        layer.cornerRadius = 8
         configureDismissButton()
         configureSeperatorLine()
         configureResetButton()
@@ -60,6 +74,7 @@ final class ReusableDetailContentView: UIView {
         saveButton.setTitleColor(.white, for: .normal)
         saveButton.setTitle("save", for: .normal)
         saveButton.titleLabel?.font = .boldSystemFont(ofSize: 18)
+        addSubview(saveButton)
     }
     
     // MARK: Constraints
@@ -74,13 +89,13 @@ final class ReusableDetailContentView: UIView {
         dismissButton.snp.makeConstraints { make in
             make.leading.top.equalToSuperview().inset(12)
             make.width.equalTo(dismissButton.snp.height)
-            make.width.equalTo(32)
+            make.width.equalTo(24)
         }
     }
     
     private func makeConstraintsSeperatorLine() {
         seperatorLine.snp.makeConstraints { make in
-            make.top.equalTo(dismissButton.snp.bottom).inset(12)
+            make.top.equalTo(dismissButton.snp.bottom).offset(12)
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(1)
         }
@@ -95,8 +110,8 @@ final class ReusableDetailContentView: UIView {
     
     private func makeConstraintsSaveButton() {
         saveButton.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().inset(8)
-            make.centerX.equalTo(resetButton.snp.centerX)
+            make.trailing.equalToSuperview().inset(36)
+            make.centerY.equalTo(resetButton.snp.centerY)
         }
     }
 }
