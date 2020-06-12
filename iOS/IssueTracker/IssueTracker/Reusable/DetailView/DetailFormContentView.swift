@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class DetailContentView: UIView {
+final class DetailFormContentView: UIView {
     
     // MARK: - Properties
     private var dismissButton: UIButton!

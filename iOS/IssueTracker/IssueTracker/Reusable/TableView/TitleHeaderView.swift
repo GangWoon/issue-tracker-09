@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class ReusableHeaderView: UITableViewHeaderFooterView {
+final class TitleHeaderView: UITableViewHeaderFooterView {
     
     // MARK: - Properties
     static let identifier: String = "ReusableHeaderView"

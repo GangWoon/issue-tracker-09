@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class CreatLabelViewController: ReusableDetailViewController {
+final class CreatLabelViewController: CategoryFormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }

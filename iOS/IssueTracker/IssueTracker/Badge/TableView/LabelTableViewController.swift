@@ -9,7 +9,7 @@
 import UIKit
 import Combine
 
-final class LabelTableViewController: ReusableTableViewController {
+final class LabelTableViewController: CategoryTableViewController {
     
     // MARK: - Properties
     private let headerViewTitle: String = "Label"
@@ -40,7 +40,7 @@ final class LabelTableViewController: ReusableTableViewController {
     
     // MARK: Delegate
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReusableHeaderView.identifier) as? ReusableHeaderView
+        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: TitleHeaderView.identifier) as? TitleHeaderView
         headerView?.apply(title: headerViewTitle)
         var subscriber: AnyCancellable?
         subscriber = headerView?.addButton.publisher(for: .touchUpInside)

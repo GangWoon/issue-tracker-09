@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class ReusableLabel: UILabel {
+final class BadgeLabel: UILabel {
     
     // MARK: - Properties
     override var intrinsicContentSize: CGSize {

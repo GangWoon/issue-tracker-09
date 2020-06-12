@@ -8,11 +8,11 @@
 
 import UIKit
 
-class ReusableDetailViewController: UIViewController {
+class CategoryFormViewController: UIViewController {
     
     // MARK: - Properties
     private var dimmedView: UIView!
-    var contentView: ReusableDetailContentView!
+    var contentView: DetailFormContentView!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -35,8 +35,8 @@ class ReusableDetailViewController: UIViewController {
     }
     
     private func configureContentView() {
-        contentView = ReusableDetailContentView()
-        dimmedView.addSubview(contentView)
+        contentView = DetailFormContentView()
+        view.addSubview(contentView)
     }
     
     // MARK: Constraints
